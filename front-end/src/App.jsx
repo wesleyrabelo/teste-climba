@@ -51,6 +51,10 @@ function App() {
     try {
       await postRegister(payload);
     } catch (error) {
+      if (error.response.status === 400) {
+        alert("Email já cadastrado!");
+        return;
+      }
       alert("Erro ao registrar usuário");
     } finally {
       reset();
