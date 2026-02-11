@@ -48,10 +48,13 @@ function App() {
       payload.dataNascimento = `${yyyy}/${mm}/${dd}`;
     }
 
-    const result = await postRegister(payload);
-    console.log(result);
-
-    reset();
+    try {
+      await postRegister(payload);
+    } catch (error) {
+      alert("Erro ao registrar usuário");
+    } finally {
+      reset();
+    }
   };
 
   return (
